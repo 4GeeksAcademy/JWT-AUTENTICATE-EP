@@ -1,0 +1,43 @@
+.btn-primary:hover {
+    background-color: #c0392b; /* Rojo más oscuro */
+}
+
+.form-control {
+    background-color: #cad8e6; /* Azul grisáceo oscuro */
+    border: 1px solid #b1b5b4; /* Verde turquesa */
+    color: #3e3c36; /* Texto amarillo */
+    border-radius: 5px;
+    height: 50px; /* Aumentar la altura de los inputs */
+}
+
+.form-control:focus {
+    background-color: #b9d2cd; /* Verde aguamarina al enfocar */
+    border-color: #707f7c;
+    box-shadow: 0 0 0 0.2rem rgba(26, 188, 156, 0.25);
+    color: #15153b;
+}
+
+h1 {
+    color: #21213c; /* Título amarillo */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem; /* Aumentar el tamaño del título */
+}
+
+.custom-logout-button {
+    background-color: #ca5555; /* Cambia este color al que prefieras */
+    border-color: #d03434; 
+    color: white
+}
+
+.custom-button {
+    color: #ffffff; /* Cambia este color al que prefieras */
+    background-color: #007bff; /* Color de fondo del botón */
+    border-color: #007bff; /* Color del borde del botón */
+}
+
+.custom-button:hover {
+    color: #ffffff; /* Cambia este color al que prefieras */
+    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
+    border-color: #0056b3; /* Color del borde del botón al pasar el ratón */
+}

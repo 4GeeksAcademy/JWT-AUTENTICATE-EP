@@ -1,3 +1,4 @@
+
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
@@ -10,15 +11,19 @@ from api.models import db
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
 
 # from models import Person
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../public/')
-app = Flask(__name__)
+app = Flask(__name__) 
 app.url_map.strict_slashes = False
-
+  
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
@@ -36,6 +41,10 @@ setup_admin(app)
 
 # add the admin
 setup_commands(app)
+
+# Setup the Flask-JWT-Extended extension
+app.config["JWT_SECRET_KEY"] = "esto debe de ser my largo"  # Change this!
+jwt = JWTManager(app)
 
 # Add all endpoints form the API with a "api" prefix
 app.register_blueprint(api, url_prefix='/api')
@@ -57,6 +66,8 @@ def sitemap():
     return send_from_directory(static_file_dir, 'index.html')
 
 # any other endpoint will try to serve it like a static file
+
+
 @app.route('/<path:path>', methods=['GET'])
 def serve_any_other_file(path):
     if not os.path.isfile(os.path.join(static_file_dir, path)):
